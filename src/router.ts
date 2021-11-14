@@ -22,6 +22,7 @@ import SetupFootprints from '@/views/Setup/SetupFootprints.vue';
 import RNS from '@/views/Setup/RNS.vue';
 import EditProfile from '@/views/EditProfile.vue';
 import RNSPending from '@/views/Setup/RNSPending.vue';
+import Preview from '@/views/Preview.vue';
 
 import config from '@/config';
 
@@ -129,6 +130,11 @@ export const routes = [
         path: '/pending',
         name: 'RNSPending',
         component: RNSPending,
+    },
+    {
+        path: '/preview',
+        name: 'Preview',
+        component: Preview,
     },
 ];
 

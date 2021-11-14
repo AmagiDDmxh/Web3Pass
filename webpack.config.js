@@ -55,28 +55,28 @@ module.exports = (env, argv) => ({
             {
                 test: /\.tsx?$/,
                 use: [
-                    {
-                        loader: 'babel-loader',
-                        options: {
-                            presets: ['@babel/preset-env', '@babel/preset-typescript'],
-                            plugins: [
-                                [
-                                    '@babel/plugin-proposal-decorators',
-                                    {
-                                        legacy: true,
-                                    },
-                                ],
-                                '@babel/plugin-transform-typescript',
-                                '@babel/plugin-proposal-optional-chaining',
-                                [
-                                    '@babel/plugin-transform-runtime',
-                                    {
-                                        regenerator: true,
-                                    },
-                                ],
-                            ],
-                        },
-                    },
+                    // {
+                    //     loader: 'babel-loader',
+                    //     options: {
+                    //         presets: ['@babel/preset-env', '@babel/preset-typescript'],
+                    //         plugins: [
+                    //             [
+                    //                 '@babel/plugin-proposal-decorators',
+                    //                 {
+                    //                     legacy: true,
+                    //                 },
+                    //             ],
+                    //             '@babel/plugin-transform-typescript',
+                    //             '@babel/plugin-proposal-optional-chaining',
+                    //             [
+                    //                 '@babel/plugin-transform-runtime',
+                    //                 {
+                    //                     regenerator: true,
+                    //                 },
+                    //             ],
+                    //         ],
+                    //     },
+                    // },
                     {
                         loader: 'ts-loader',
                         options: {
