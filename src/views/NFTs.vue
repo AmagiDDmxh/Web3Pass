@@ -19,6 +19,7 @@
                     @click="toPublicPage(rns, ethAddress)"
                 />
             </div>
+            <NFTTitle class="mb-6" :totalNFTs="totalNFTs" />
             <div class="nft-list grid gap-6 grid-cols-2 justify-items-center sm:grid-cols-3">
                 <div class="relative" v-for="item in nfts" :key="item.platform + item.identity + item.id">
                     <NFTItem
@@ -56,6 +57,7 @@
 import { Options, Vue } from 'vue-class-component';
 import Button from '@/components/Button.vue';
 import ImgHolder from '@/components/ImgHolder.vue';
+import NFTTitle from '@/components/NFTTitle.vue';
 import NFTItem from '@/components/NFT/NFTItem.vue';
 import NFTBadges from '@/components/NFT/NFTBadges.vue';
 import RSS3, { IRSS3 } from '@/common/rss3';
@@ -75,13 +77,14 @@ interface Profile {
 
 @Options({
     name: 'NFTs',
-    components: { ImgHolder, Button, NFTItem, NFTBadges },
+    components: { ImgHolder, Button, NFTItem, NFTBadges, NFTTitle },
 })
 export default class NFTs extends Vue {
     rns: string = '';
     ethAddress: string = '';
     NFTWidth: number = 0;
     isOwner: boolean = false;
+    totalNFTs: number = 0;
     nfts: GeneralAssetWithTags[] = [];
     rss3Profile: Profile = {
         avatar: config.defaultAvatar,
@@ -227,6 +230,7 @@ export default class NFTs extends Vue {
         this.nfts = NFTList.filter((asset) => !asset.tags || asset.tags.indexOf('pass:hidden') === -1).sort(
             (a, b) => this.getAssetOrder(a) - this.getAssetOrder(b),
         );
+        this.totalNFTs = this.nfts.length;
     }
 
     toSingleNFTPage(platform: string, identity: string, id: string, type: string) {
